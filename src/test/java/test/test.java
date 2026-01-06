@@ -49,5 +49,14 @@ public class test {
         assertThat(text).isEqualTo(InvalidAuthorization.LOCKED_USER);
     }
 
+    @Test
+    @DisplayName("Авторизация с пустым юзером")
+    public void emptyLoginTest() {
+        MainPage.of().inputLogin("")
+                .inputPassword(ConfigData.PASSWORD.getValue())
+                .clickLoginButton();
 
+        String text = MainPage.of().getErrorText();
+        assertThat(text).isEqualTo(InvalidAuthorization.EMPTY_LOGIN);
+    }
 }
