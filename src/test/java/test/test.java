@@ -37,4 +37,17 @@ public class test {
 
         assertThat(text).isEqualTo(InvalidAuthorization.INVALID_PASSWORD);
     }
+
+    @Test
+    @DisplayName("Авторизация с заблокированным юзером")
+    public void lockedUserTest() {
+        MainPage.of().inputLogin(ConfigData.LOCKED_USER.getValue())
+                .inputPassword(ConfigData.PASSWORD.getValue())
+                .clickLoginButton();
+
+        String text = MainPage.of().getErrorText();
+        assertThat(text).isEqualTo(InvalidAuthorization.LOCKED_USER);
+    }
+
+
 }

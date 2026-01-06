@@ -17,6 +17,11 @@ public enum ConfigData {
             return ConfigReader.getConfigProperty("login");
         }
     },
+    LOCKED_USER {
+        public String getValue() {
+            return ConfigReader.getConfigProperty("login.locked");
+        }
+    },
     PASSWORD {
         public String getValue() {
             return ConfigReader.getConfigProperty("password");
