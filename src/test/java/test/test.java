@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -53,7 +52,7 @@ public class test {
     }
 
     @Test
-    @DisplayName("Авторизация с пустым юзером")
+    @DisplayName("Авторизация с пустым логином")
     public void emptyLoginTest() {
         MainPage.of().inputLogin("")
                 .inputPassword(ConfigData.PASSWORD.getValue())

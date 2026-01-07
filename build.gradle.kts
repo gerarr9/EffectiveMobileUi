@@ -36,17 +36,6 @@ dependencies {
     // Selenide
     implementation("com.codeborne:selenide:$selenideVersion")
 
-    // Lombok
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
-    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-
-    // Faker
-    implementation("com.github.javafaker:javafaker:$javafakerVersion")
-
-
-
 }
 
 
