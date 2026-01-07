@@ -9,6 +9,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(SelenideExtensions.class)
@@ -58,5 +61,19 @@ public class test {
 
         String text = MainPage.of().getErrorText();
         assertThat(text).isEqualTo(InvalidAuthorization.EMPTY_LOGIN);
+    }
+
+    @Test
+    @DisplayName("Авторизация с долгой загрузкой юзера")
+    public void performanceGlitchUserTest() {
+        MainPage.of().inputLogin(ConfigData.GLITCH_USER.getValue())
+                .inputPassword(ConfigData.PASSWORD.getValue())
+                .clickLoginButton();
+
+        $x("//input[@data-test='login-button']").shouldNot(exist);
+
+        String currentUrl = Selenide.webdriver().object().getCurrentUrl();
+
+        assertThat(currentUrl).isEqualTo(ConfigData.INVENTORY.getValue());
     }
 }

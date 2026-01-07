@@ -44,6 +44,9 @@ dependencies {
 
     // Faker
     implementation("com.github.javafaker:javafaker:$javafakerVersion")
+
+
+
 }
 
 
@@ -54,9 +57,13 @@ tasks.withType<JavaCompile> {
 tasks.withType<Test> {
     jvmArgs = listOf("-Dfile.encoding=UTF-8", "-Xmx2g", "-Xms1g")
 
+
+
     useJUnitPlatform()
 
     testLogging {
         events("passed", "skipped", "failed")
     }
 }
+
+
